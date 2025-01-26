@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:mobile/model/slot_model.dart';
+import 'package:mobile/util/styles.dart';
 
 class Slot extends StatefulWidget {
   final ParkingSlot slot;
@@ -16,16 +17,22 @@ class _SlotState extends State<Slot> {
       padding: EdgeInsets.all(18),
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(16),
-        color: widget.slot.avalibility ? Colors.green : Colors.red,
+        color: widget.slot.avalibility ? appColorgreen : appColorred,
         boxShadow: [
-          BoxShadow(color: Colors.black54, offset: Offset(1, 2), blurRadius: 2),
+          BoxShadow(
+              color: widget.slot.avalibility ? appColorgreen : appColorred,
+              spreadRadius: 1,
+              blurRadius: 4),
         ],
       ),
-      child: Text(
-        widget.slot.avalibility
-            ? "Parking Slot is Avalible"
-            : "Parking Slot is Allocated",
-        style: TextStyle(color: Colors.blueAccent, fontSize: 14),
+      child: Center(
+        child: Text(
+          widget.slot.avalibility
+              ? "Parking Slot is Avalible"
+              : "Parking Slot is Allocated",
+          style: TextStyle(
+              color: Colors.white, fontSize: 14, fontWeight: FontWeight.bold),
+        ),
       ),
     );
   }
